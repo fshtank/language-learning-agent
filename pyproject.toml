@@ -1,0 +1,17 @@
+[project]
+name = "language-learning-agent"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "ipywidgets>=8.1.9",
+    "langchain>=1.4.8",
+    "langchain-mcp-adapters>=0.3.2",
+    "langchain-ollama>=1.1.0",
+    "langchain-openai>=1.7.3",
+    "langgraph>=1.2.19",
+    "pandas>=3.1.0",
+    "python-dotenv>=1.2.4",
+    "spacy>=3.8.18",
+    "spacy-transformers>=1.4.0",
+    "wordfreq>=3.1.1",
+]
