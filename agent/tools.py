@@ -2,13 +2,20 @@ import os
 import json
 import random
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from langchain_core.tools import tool
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage
 
+LLM_MODEL=os.getenv("TRANSLATION_MODEL")
+LLM_URL=os.getenv("TRANSLATION_URL")
+
 translation_model = ChatOllama(
-    model="llama3.2:3b",
-    temperature=0.7
+    model=LLM_MODEL,
+    temperature=0.7,
+    base_url=LLM_URL
 )
 
 @tool

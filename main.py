@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 from typing import TypedDict, Optional, Annotated
 
@@ -10,6 +11,7 @@ from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
+## Agent Tools
 from agent.tools import (
     get_n_random_words,
     get_n_random_words_by_difficulty_level,
@@ -20,7 +22,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+LLM_MODEL=os.getenv("ORCHESTRATOR_MODEL")
+LLM_URL=os.getenv("ORCHESTRATOR_URL")
 
+## MCP Agent State <--
 class AgentState(TypedDict):
     messages: Annotated[list[AnyMessage], add_messages]
     source_language: Optional[str]
@@ -29,7 +34,8 @@ class AgentState(TypedDict):
     target_language: Optional[str]
 
 
-CLANKI_JS = "/Users/Jodie.Burchell/Documents/git/clanki/build/index.js"
+# CLANKI_JS = "/Users/Jodie.Burchell/Documents/git/clanki/build/index.js"
+CLANKI_JS = os.getenv("CLANKI_JS_PATH")
 
 local_tools = [
     get_n_random_words,
@@ -142,9 +148,11 @@ def assistant(state: AgentState):
 
     # Access tools from the state or a global variable
     tools = assistant.tools if hasattr(assistant, 'tools') else []
+
     llm = ChatOllama(
-        model="qwen3:8b",
-        temperature=0.7
+        model=LLM_MODEL,
+        temperature=0.7,
+        base_url=LLM_URL
     )
     llm_with_tools = llm.bind_tools(tools)
 
@@ -181,7 +189,13 @@ async def main():
     """Main async function to run the application."""
     react_graph = await build_graph()
 
-    user_prompt = "Please get 10 easy words in Spanish, translate them to English, and create a new Anki deck with them called Spanish::Easy."
+    user_prompt_spanish_to_english_easy = ("Please get 10 easy words in Spanish, translate them to English, "
+                   "and create a new Anki deck with them called Spanish::Easy.")
+
+    user_prompt_german_to_english_difficult = ("Please get 10 difficult words in German, translate them to English, "
+                                           "and create a new Anki deck with them called German::Difficult.")
+
+    user_prompt = user_prompt_german_to_english_difficult
 
     messages = [HumanMessage(content=user_prompt)]
 
