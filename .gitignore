@@ -5,6 +5,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Application Folders
+data/
+raw-word-lists/
+
 # C extensions
 *.so
 
