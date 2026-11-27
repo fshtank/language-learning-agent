@@ -50,12 +50,13 @@ from wordfreq import zipf_frequency
 ---
 
 Local Environment Setup:
-1. Install "[AnkiConnect]"(https://ankiweb.net/shared/info/2055492159) Quiz Cards app.
+1. Install "[AnkiConnect]"(https://apps.ankiweb.net/) Quiz Cards app.
    1. Created a Free Account and download app
-   2. Install Add-On `2055492159`
-2. Clone [fshtank/clanki](gh repo clone fshtank/clanki) MCP Server
-   1. to ~/mcpservers/clanki    
-   2. See [mcpservers.com search "Clanki"](https://mcpservers.org/search?query=Clanki)
+   2. Install Add-On [2055492159 (Click Here) ](https://ankiweb.net/shared/info/2055492159)
+2. Clone `fshtank/clanki` MCP Server
+   1. `gh repo clone fshtank/clanki` 
+   2. to ~/mcpservers/clanki    
+   3. See [mcpservers.com search "Clanki"](https://mcpservers.org/search?query=Clanki)
 
 ### {project_root}/.env
 #### .env API Keys
@@ -64,7 +65,7 @@ OLLAMA_API_KEY={machine_specific_key}
 JUNIE_API_KEY=perm-ZnNodGFuaw=={machine_specific_key}
 ```
 #### Clanki MCP Server location on Local SSD
-`CLANKI_JS_PATH="/Users/rickfisher/MCP_servers/clanki/build/index.js"`
+`CLANKI_JS_PATH="/Users/rickfisher/mcpservers/clanki/build/index.js"`
 ``` 
 #### .env Orchestration Model LLM variables
 ```
