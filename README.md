@@ -49,6 +49,39 @@ from wordfreq import zipf_frequency
 
 ---
 
+Local Environment Setup:
+1. Install "[AnkiConnect]"(https://ankiweb.net/shared/info/2055492159) Quiz Cards app.
+   1. Created a Free Account and download app
+   2. Install Add-On `2055492159`
+2. Clone [fshtank/clanki](gh repo clone fshtank/clanki) MCP Server
+   1. to ~/mcpservers/clanki    
+   2. See [mcpservers.com search "Clanki"](https://mcpservers.org/search?query=Clanki)
+
+### {project_root}/.env
+#### .env API Keys
+```
+OLLAMA_API_KEY={machine_specific_key}
+JUNIE_API_KEY=perm-ZnNodGFuaw=={machine_specific_key}
+```
+#### Clanki MCP Server location on Local SSD
+`CLANKI_JS_PATH="/Users/rickfisher/MCP_servers/clanki/build/index.js"`
+``` 
+#### .env Orchestration Model LLM variables
+```
+ORCHESTRATOR_MODEL=qwen3.5:9b
+ORCHESTRATOR_URL=http://luggable-home:11434
+```
+
+#### .env Translation Model LLM variables
+```
+TRANSLATION_MODEL=llama3.2:3b
+TRANSLATION_URL=http://localhost:1143
+``` 
+
+
+
+
+--- 
 
 > main.py considering main.py in the project folder language-learning-agent/ , consider function def assistant lin 60 variable textual_description_of_tools.
 > 1. Why does it have the tools.py methods definition for all three methods in text? and a description how to use them?
