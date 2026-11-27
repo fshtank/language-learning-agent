@@ -1,9 +1,13 @@
 # Byte-compiled / optimized / DLL files
-.idea
+# .idea -- Im the only one working on this ... so I'm committing my IntelliJ directories
 .DS_Store
 __pycache__/
 *.py[codz]
 *$py.class
+
+# Application Folders
+data/
+raw-word-lists/
 
 # C extensions
 *.so
